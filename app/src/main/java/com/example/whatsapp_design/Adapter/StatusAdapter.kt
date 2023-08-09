@@ -1,0 +1,29 @@
+package com.example.whatsapp_design.Adapter
+
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView.Adapter
+import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import com.example.whatsapp_design.Models.ProfileModel
+import com.example.whatsapp_design.Models.StatusModel
+import com.example.whatsapp_design.databinding.StatusItemBinding
+
+class StatusAdapter(private  val list: ArrayList<ProfileModel>) : Adapter<StatusAdapter.StatusHolder>() {
+    class StatusHolder(itemView: StatusItemBinding) : ViewHolder(itemView.root){
+        var binding = itemView
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StatusHolder {
+        var binding = StatusItemBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        return StatusHolder(binding)
+    }
+
+    override fun getItemCount(): Int {
+        return list.size
+    }
+
+    override fun onBindViewHolder(holder: StatusHolder, position: Int) {
+        holder.binding.txtStatus.text = list.get(position).name
+        holder.binding.imgStatus.setImageResource(list.get(position).image)
+    }
+}
