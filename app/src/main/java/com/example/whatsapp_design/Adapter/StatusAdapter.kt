@@ -23,7 +23,11 @@ class StatusAdapter(private  val list: ArrayList<ProfileModel>) : Adapter<Status
     }
 
     override fun onBindViewHolder(holder: StatusHolder, position: Int) {
-        holder.binding.txtStatus.text = list.get(position).name
-        holder.binding.imgStatus.setImageResource(list.get(position).image)
+        holder.binding.apply {
+            list.get(position).apply {
+                txtStatus.text = name
+                imgStatus.setImageResource(image)
+            }
+        }
     }
 }

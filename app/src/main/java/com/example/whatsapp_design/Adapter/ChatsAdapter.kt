@@ -1,6 +1,7 @@
 package com.example.whatsapp_design.Adapter
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
@@ -30,6 +31,9 @@ class ChatsAdapter(private val list: ArrayList<ProfileModel>) : Adapter<ChatsAda
             list.get(position).apply {
                 txtName.text = name
                 imgProfile.setImageResource(image)
+                if(position % 2 == 0){
+                    txtCount.visibility = View.GONE
+                }
             }
          }
     }
